@@ -58,6 +58,19 @@ import org.checkerframework.checker.nullness.qual.MonotonicNonNull;
 public class ChunkSampleStream<T extends ChunkSource>
     implements SampleStream, SequenceableLoader, Loader.Callback<Chunk>, Loader.ReleaseCallback {
 
+  PlayerChunkLoadListener playerChunkLoadListener;
+  public interface PlayerChunkLoadListener{
+    void onChunkLoadCompleted();
+    void onChunkLoadError();
+    void onChunkLoadCanceled();
+  }
+  public void addChunkLoadListener(PlayerChunkLoadListener playerChunkLoadListener){
+    this.playerChunkLoadListener = playerChunkLoadListener;
+
+  }
+  public void removeChunkLoadListener(){
+    this.playerChunkLoadListener = null;
+  }
   /** A callback to be notified when a sample stream has finished being released. */
   public interface ReleaseCallback<T extends ChunkSource> {
 
@@ -418,6 +431,7 @@ public class ChunkSampleStream<T extends ChunkSource>
 
   @Override
   public void onLoadCompleted(Chunk loadable, long elapsedRealtimeMs, long loadDurationMs) {
+    if (playerChunkLoadListener != null) playerChunkLoadListener.onChunkLoadCompleted();
     loadingChunk = null;
     chunkSource.onChunkLoadCompleted(loadable);
     LoadEventInfo loadEventInfo =
@@ -445,6 +459,7 @@ public class ChunkSampleStream<T extends ChunkSource>
   @Override
   public void onLoadCanceled(
       Chunk loadable, long elapsedRealtimeMs, long loadDurationMs, boolean released) {
+    if (playerChunkLoadListener != null) playerChunkLoadListener.onChunkLoadCanceled();
     loadingChunk = null;
     canceledMediaChunk = null;
     LoadEventInfo loadEventInfo =
@@ -487,6 +502,7 @@ public class ChunkSampleStream<T extends ChunkSource>
       long loadDurationMs,
       IOException error,
       int errorCount) {
+    if (playerChunkLoadListener != null) playerChunkLoadListener.onChunkLoadError();
     long bytesLoaded = loadable.bytesLoaded();
     boolean isMediaChunk = isMediaChunk(loadable);
     int lastChunkIndex = mediaChunks.size() - 1;

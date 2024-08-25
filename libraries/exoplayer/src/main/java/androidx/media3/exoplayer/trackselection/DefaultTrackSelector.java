@@ -2663,6 +2663,14 @@ public class DefaultTrackSelector extends MappingTrackSelector
             params);
 
     @Nullable
+    Pair<ExoTrackSelection.Definition, Integer> selectedVideo2 =
+        selectVideoTrack(
+            mappedTrackInfo,
+            rendererFormatSupports,
+            rendererMixedMimeTypeAdaptationSupports,
+            params);
+
+    @Nullable
     Pair<ExoTrackSelection.Definition, Integer> selectedImage =
         params.isPrioritizeImageOverVideoEnabled || selectedVideo == null
             ? selectImageTrack(mappedTrackInfo, rendererFormatSupports, params)
@@ -2672,6 +2680,9 @@ public class DefaultTrackSelector extends MappingTrackSelector
       definitions[selectedImage.second] = selectedImage.first;
     } else if (selectedVideo != null) {
       definitions[selectedVideo.second] = selectedVideo.first;
+    }
+    if (selectedVideo2 != null) {
+      definitions[selectedVideo2.second + 1] = (selectedVideo2.first);
     }
 
     @Nullable

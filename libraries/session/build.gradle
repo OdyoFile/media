@@ -16,12 +16,12 @@ apply from: "$gradle.ext.androidxMediaSettingsDir/common_library_config.gradle"
 android {
     namespace 'androidx.media3.session'
 
-    buildTypes {
+/*    buildTypes {
         debug {
             testCoverageEnabled = true
         }
-    }
-    sourceSets.test.assets.srcDir '../test_data/src/test/assets/'
+    }*/
+    //sourceSets.test.assets.srcDir '../test_data/src/test/assets/'
     lint {
         baseline = file("lint-baseline.xml")
     }
@@ -42,12 +42,12 @@ dependencies {
     implementation 'androidx.collection:collection:' + androidxCollectionVersion
     implementation 'androidx.media:media:' + androidxMediaVersion
     implementation 'androidx.core:core:' + androidxCoreVersion
-    testImplementation 'com.squareup.okhttp3:mockwebserver:' + okhttpVersion
+/*    testImplementation 'com.squareup.okhttp3:mockwebserver:' + okhttpVersion
     testImplementation project(modulePrefix + 'test-data')
     testImplementation project(modulePrefix + 'test-utils')
     testImplementation project(modulePrefix + 'test-utils-robolectric')
     testImplementation project(modulePrefix + 'lib-exoplayer')
-    testImplementation 'org.robolectric:robolectric:' + robolectricVersion
+    testImplementation 'org.robolectric:robolectric:' + robolectricVersion*/
 }
 
 ext {

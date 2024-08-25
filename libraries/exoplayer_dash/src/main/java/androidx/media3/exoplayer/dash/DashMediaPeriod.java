@@ -76,7 +76,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /** A DASH {@link MediaPeriod}. */
-/* package */ final class DashMediaPeriod
+public class DashMediaPeriod
     implements MediaPeriod,
         SequenceableLoader.Callback<ChunkSampleStream<DashChunkSource>>,
         ChunkSampleStream.ReleaseCallback<DashChunkSource> {
@@ -940,7 +940,11 @@ import java.util.regex.Pattern;
     return new ChunkSampleStream[length];
   }
 
-  private static final class TrackGroupInfo {
+    public DashManifest getManifest() {
+    return  manifest;
+    }
+
+    private static final class TrackGroupInfo {
 
     @Documented
     @Retention(RetentionPolicy.SOURCE)

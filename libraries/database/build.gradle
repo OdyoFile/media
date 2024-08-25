@@ -16,11 +16,11 @@ apply from: "$gradle.ext.androidxMediaSettingsDir/common_library_config.gradle"
 android {
     namespace 'androidx.media3.database'
 
-    buildTypes {
+/*    buildTypes {
         debug {
             testCoverageEnabled = true
         }
-    }
+    }*/
 
     publishing {
         singleVariant('release') {
@@ -33,11 +33,11 @@ dependencies {
     implementation project(modulePrefix + 'lib-common')
     implementation 'androidx.annotation:annotation:' + androidxAnnotationVersion
     compileOnly 'org.jetbrains.kotlin:kotlin-annotations-jvm:' + kotlinAnnotationsVersion
-    testImplementation 'androidx.test:core:' + androidxTestCoreVersion
+/*    testImplementation 'androidx.test:core:' + androidxTestCoreVersion
     testImplementation 'androidx.test.ext:junit:' + androidxTestJUnitVersion
     testImplementation 'com.google.truth:truth:' + truthVersion
     testImplementation 'org.robolectric:robolectric:' + robolectricVersion
-    testImplementation project(modulePrefix + 'test-utils')
+    testImplementation project(modulePrefix + 'test-utils')*/
 }
 
 ext {

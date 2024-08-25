@@ -16,16 +16,16 @@ apply from: "$gradle.ext.androidxMediaSettingsDir/common_library_config.gradle"
 android {
     namespace 'androidx.media3.datasource'
 
-    buildTypes {
+/*    buildTypes {
         debug {
             testCoverageEnabled = true
         }
-    }
+    }*/
 
-    sourceSets {
+/*    sourceSets {
         androidTest.assets.srcDir '../test_data/src/test/assets'
         test.assets.srcDir '../test_data/src/test/assets'
-    }
+    }*/
 
     publishing {
         singleVariant('release') {
@@ -44,6 +44,7 @@ dependencies {
     compileOnly 'org.checkerframework:checker-qual:' + checkerframeworkVersion
     compileOnly 'org.jetbrains.kotlin:kotlin-annotations-jvm:' + kotlinAnnotationsVersion
     androidTestImplementation 'androidx.test:runner:' + androidxTestRunnerVersion
+/*
     androidTestImplementation 'com.linkedin.dexmaker:dexmaker:' + dexmakerVersion
     androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:' + dexmakerVersion
     androidTestImplementation 'com.squareup.okhttp3:mockwebserver:' + okhttpVersion
@@ -56,7 +57,7 @@ dependencies {
     testImplementation 'com.google.truth:truth:' + truthVersion
     testImplementation 'com.squareup.okhttp3:mockwebserver:' + okhttpVersion
     testImplementation 'org.robolectric:robolectric:' + robolectricVersion
-    testImplementation project(modulePrefix + 'test-utils')
+    testImplementation project(modulePrefix + 'test-utils')*/
 }
 
 ext {

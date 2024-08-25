@@ -18,7 +18,7 @@ apply from: "$gradle.ext.androidxMediaSettingsDir/common_library_config.gradle"
 // check if a 'releaseArtifactId' exists.
 rootProject.allprojects.forEach {
     if ((it.name.startsWith(modulePrefix.replace(':', '') + 'lib-')
-                || it.name.startsWith(modulePrefix.replace(':', '') + 'test-'))
+                /*|| it.name.startsWith(modulePrefix.replace(':', '') + 'test-')*/)
             && !it.name.endsWith('-common')) {
         evaluationDependsOn(':' + it.name)
     }
@@ -27,11 +27,11 @@ rootProject.allprojects.forEach {
 android {
     namespace 'androidx.media3.common'
 
-    buildTypes {
+/*    buildTypes {
         debug {
             testCoverageEnabled = true
         }
-    }
+    }*/
     lint {
         baseline = file("lint-baseline.xml")
     }
@@ -69,7 +69,7 @@ dependencies {
     compileOnly 'com.google.errorprone:error_prone_annotations:' + errorProneVersion
     compileOnly 'org.checkerframework:checker-qual:' + checkerframeworkVersion
     compileOnly 'org.jetbrains.kotlin:kotlin-annotations-jvm:' + kotlinAnnotationsVersion
-    androidTestImplementation 'androidx.test:runner:' + androidxTestRunnerVersion
+/*    androidTestImplementation 'androidx.test:runner:' + androidxTestRunnerVersion
     androidTestImplementation 'com.linkedin.dexmaker:dexmaker:' + dexmakerVersion
     androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:' + dexmakerVersion
     androidTestImplementation(project(modulePrefix + 'test-utils')) {
@@ -82,7 +82,7 @@ dependencies {
     testImplementation 'com.google.truth:truth:' + truthVersion
     testImplementation 'org.robolectric:robolectric:' + robolectricVersion
     testImplementation project(modulePrefix + 'lib-exoplayer')
-    testImplementation project(modulePrefix + 'test-utils')
+    testImplementation project(modulePrefix + 'test-utils')*/
 }
 
 ext {

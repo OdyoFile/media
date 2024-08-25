@@ -102,6 +102,10 @@ public final class DashMediaSource extends BaseMediaSource {
     MediaLibraryInfo.registerModule("media3.exoplayer.dash");
   }
 
+  public DashMediaPeriod dashMediaPeriod;
+  public DashMediaPeriod getMediaPeriod()  {
+    return dashMediaPeriod;
+  }
   /** Factory for {@link DashMediaSource}s. */
   @SuppressWarnings("deprecation") // Implement deprecated type for backwards compatibility.
   public static final class Factory implements MediaSourceFactory {
@@ -579,6 +583,7 @@ public final class DashMediaSource extends BaseMediaSource {
             playerEmsgCallback,
             getPlayerId());
     periodsById.put(mediaPeriod.id, mediaPeriod);
+    dashMediaPeriod = mediaPeriod;
     return mediaPeriod;
   }
 
