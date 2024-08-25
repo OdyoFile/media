@@ -18,7 +18,7 @@ apply from: "$gradle.ext.androidxMediaSettingsDir/common_library_config.gradle"
 // check if a 'releaseArtifactId' exists.
 rootProject.allprojects.forEach {
     if ((it.name.startsWith(modulePrefix.replace(':', '') + 'lib-')
-                /*|| it.name.startsWith(modulePrefix.replace(':', '') + 'test-')*/)
+                || it.name.startsWith(modulePrefix.replace(':', '') + 'test-'))
             && !it.name.endsWith('-common')) {
         evaluationDependsOn(':' + it.name)
     }
@@ -32,9 +32,9 @@ android {
             testCoverageEnabled = true
         }
     }*/
-    lint {
+/*    lint {
         baseline = file("lint-baseline.xml")
-    }
+    }*/
     publishing {
         singleVariant('release') {
             withSourcesJar()

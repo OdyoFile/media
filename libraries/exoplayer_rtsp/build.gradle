@@ -16,13 +16,13 @@ apply from: "$gradle.ext.androidxMediaSettingsDir/common_library_config.gradle"
 android {
     namespace 'androidx.media3.exoplayer.rtsp'
 
-    buildTypes {
+   /* buildTypes {
         debug {
             testCoverageEnabled = true
         }
     }
 
-    sourceSets.test.assets.srcDir '../test_data/src/test/assets/'
+    sourceSets.test.assets.srcDir '../test_data/src/test/assets/'*/
 
     publishing {
         singleVariant('release') {
@@ -37,11 +37,11 @@ dependencies {
     compileOnly 'org.checkerframework:checker-qual:' + checkerframeworkVersion
     compileOnly 'org.jetbrains.kotlin:kotlin-annotations-jvm:' + kotlinAnnotationsVersion
     implementation project(modulePrefix + 'lib-exoplayer')
-    testImplementation project(modulePrefix + 'test-utils-robolectric')
+/*    testImplementation project(modulePrefix + 'test-utils-robolectric')
     testImplementation project(modulePrefix + 'test-utils')
     testImplementation project(modulePrefix + 'test-data')
     testImplementation 'org.checkerframework:checker-qual:' + checkerframeworkVersion
-    testImplementation 'org.robolectric:robolectric:' + robolectricVersion
+    testImplementation 'org.robolectric:robolectric:' + robolectricVersion*/
 }
 
 ext {

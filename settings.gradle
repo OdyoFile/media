@@ -25,7 +25,7 @@ gradle.ext.androidxMediaEnableMidiModule = true
 
 // All library modules should be configured in core_settings.gradle. Below are
 // modules that no app should depend on.
-
+/*
 // Demo apps
 include modulePrefix + 'demo'
 project(modulePrefix + 'demo').projectDir = new File(rootDir, 'demos/main')
@@ -60,6 +60,6 @@ project(modulePrefix + 'test-session-current').projectDir = new File(rootDir, 'l
 
 // MediaController test app.
 include modulePrefix + 'testapp-controller'
-project(modulePrefix + 'testapp-controller').projectDir = new File(rootDir, 'testapps/controller')
+project(modulePrefix + 'testapp-controller').projectDir = new File(rootDir, 'testapps/controller')*/
 
 apply from: 'core_settings.gradle'
